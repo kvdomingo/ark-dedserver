@@ -18,6 +18,19 @@ tasks:
     cmds:
       - docker compose -p $NAME logs --follow
 
+  status:
+    desc: View cluster status
+    cmds:
+      - task exec -- crystal_isles arkmanager status
+      - task exec -- center arkmanager status
+      - task exec -- fjordur arkmanager status
+    ignore_error: true
+
+  start:
+    desc: Start cluster
+    cmds:
+      - docker compose -p $NAME start
+
   shutdown:
     desc: Shutdown cluster
     cmds:
