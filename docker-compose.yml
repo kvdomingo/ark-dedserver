@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  crystal_isles:
+    image: r15ch13/arkcluster:latest
+    deploy:
+      mode: global
+    env_file: .env
+    environment:
+      - SERVERMAP=CrystalIsles
+      - SESSION_NAME=Simplandia CrystalIsles
+    ports:
+      - "32330:32330/udp"
+      - "7777:7777/udp"
+      - "7778:7778/udp"
+      - "27015:27015/udp"
+    volumes:
+      - server_crystal-isles:/ark
+      - cluster:/cluster
+    restart: unless-stopped
+
+  center:
+    image: r15ch13/arkcluster:latest
+    deploy:
+      mode: global
+    env_file: .env
+    environment:
+      - SERVERMAP=TheCenter
+      - SESSION_NAME=Simplandia TheCenter
+    ports:
+      - "32331:32331/udp"
+      - "7779:7779/udp"
+      - "7780:7780/udp"
+      - "27016:27016/udp"
+    volumes:
+      - server_the-center:/ark
+      - cluster:/cluster
+    restart: unless-stopped
+
+  fjordur:
+    image: r15ch13/arkcluster:latest
+    deploy:
+      mode: global
+    env_file: .env
+    environment:
+      - SERVERMAP=Fjordur
+      - SESSION_NAME=Simplandia Fjordur
+    ports:
+      - "32332:32332/udp"
+      - "7781:7781/udp"
+      - "7782:7782/udp"
+      - "27017:27017/udp"
+    volumes:
+      - server_fjordur:/ark
+      - cluster:/cluster
+    restart: unless-stopped
+
+volumes:
+  server_crystal-isles:
+  server_the-center:
+  server_fjordur:
+  cluster:
