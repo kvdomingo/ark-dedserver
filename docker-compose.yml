@@ -20,6 +20,7 @@ services:
       - ./fjordur/GameUserSettings.ini:/ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini
       - cluster:/cluster
     restart: unless-stopped
+    stop_grace_period: 30s
 
 #  crystal_isles:
 #    image: r15ch13/arkcluster:latest
