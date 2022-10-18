@@ -9,6 +9,9 @@ services:
     environment:
       - SERVERMAP=Fjordur
       - SESSION_NAME=Simplandia Fjordur
+      - RCON_PORT=32330
+      - GAME_PORT=7777
+      - QUERY_PORT=27015
     ports:
       - "32330:32330/udp"
       - "7777:7777/udp"
@@ -30,6 +33,9 @@ services:
 #    environment:
 #      - SERVERMAP=CrystalIsles
 #      - SESSION_NAME=Simplandia CrystalIsles
+#      - RCON_PORT=32331
+#      - GAME_PORT=7779
+#      - QUERY_PORT=27016
 #    ports:
 #      - "32331:32331/udp"
 #      - "7779:7779/udp"
@@ -50,6 +56,9 @@ services:
 #    environment:
 #      - SERVERMAP=TheCenter
 #      - SESSION_NAME=Simplandia TheCenter
+#      - RCON_PORT=32332
+#      - GAME_PORT=7781
+#      - QUERY_PORT=27017
 #    ports:
 #      - "32332:32332/udp"
 #      - "7781:7781/udp"
