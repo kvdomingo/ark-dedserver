@@ -10,13 +10,13 @@ tasks:
   default:
     desc: Build and start cluster
     cmds:
-      - docker compose -p $NAME up -d --build
+      - docker compose -p {{.NAME}} up -d --build
       - task logs
 
   logs:
     desc: View cluster logs
     cmds:
-      - docker compose -p $NAME logs --follow
+      - docker compose -p {{.NAME}} logs --follow
 
   status:
     desc: View cluster status
@@ -29,24 +29,24 @@ tasks:
   start:
     desc: Start cluster
     cmds:
-      - docker compose -p $NAME start
+      - docker compose -p {{.NAME}} start
 
   shutdown:
     desc: Shutdown cluster
     cmds:
-      - docker compose -p $NAME stop
+      - docker compose -p {{.NAME}} stop
 
   restart:
     desc: Restart cluster
     cmds:
-      - docker compose -p $NAME restart
+      - docker compose -p {{.NAME}} restart
 
   clean:
     desc: Shutdown and delete containers
     cmds:
-      - docker compose -p $NAME down --remove-orphans
+      - docker compose -p {{.NAME}} down --remove-orphans
 
   exec:
     desc: Run a command in the specified container
     cmds:
-      - docker compose -p $NAME exec -- {{.CLI_ARGS}}
+      - docker compose -p {{.NAME}} exec -- {{.CLI_ARGS}}
