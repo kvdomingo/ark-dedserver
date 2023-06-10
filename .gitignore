@@ -1,4 +1,4 @@
 .idea/
+server_*/
+
 .env
-Game.ini
-GameUserSettings.ini

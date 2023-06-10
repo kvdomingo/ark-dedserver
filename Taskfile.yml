@@ -10,38 +10,36 @@ tasks:
   default:
     desc: Build and start cluster
     cmds:
-      - docker compose -p {{.NAME}} up -d --build
-      - task logs
+      - docker compose -p {{.NAME}} up -d {{.CLI_ARGS}}
 
   logs:
     desc: View cluster logs
     cmds:
-      - docker compose -p {{.NAME}} logs --follow
+      - docker compose -p {{.NAME}} logs --follow {{.CLI_ARGS}}
 
   status:
     desc: View cluster status
     cmds:
       - task exec -- crystal_isles arkmanager status
-      - task exec -- center arkmanager status
       - task exec -- fjordur arkmanager status
     ignore_error: true
 
   start:
     desc: Start cluster
     cmds:
-      - docker compose -p {{.NAME}} start
+      - docker compose -p {{.NAME}} start {{.CLI_ARGS}}
 
-  shutdown:
+  stop:
     desc: Shutdown cluster
     cmds:
-      - docker compose -p {{.NAME}} stop
+      - docker compose -p {{.NAME}} stop {{.CLI_ARGS}}
 
   restart:
     desc: Restart cluster
     cmds:
-      - docker compose -p {{.NAME}} restart
+      - docker compose -p {{.NAME}} restart {{.CLI_ARGS}}
 
-  clean:
+  down:
     desc: Shutdown and delete containers
     cmds:
       - docker compose -p {{.NAME}} down --remove-orphans
@@ -50,3 +48,10 @@ tasks:
     desc: Run a command in the specified container
     cmds:
       - docker compose -p {{.NAME}} exec -- {{.CLI_ARGS}}
+
+  arkmanager:
+    desc: Pass arguments to arkmanager CLI
+    ignore_error: true
+    cmds:
+      - docker compose exec crystal_isles arkmanager {{.CLI_ARGS}}
+      - docker compose exec fjordur arkmanager {{.CLI_ARGS}}
