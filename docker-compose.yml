@@ -20,23 +20,23 @@ services:
       - ./server_crystal-isles:/ark
     stop_grace_period: ${STOP_GRACE_PERIOD}
 
-  fjordur:
-    image: r15ch13/arkcluster:latest
-    deploy:
-      mode: global
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      SERVERMAP: Fjordur
-      SESSION_NAME: Simplandia Fjordur
-      GAME_PORT: 7779
-      QUERY_PORT: 27016
-      RCON_PORT: 32331
-    ports:
-      - 7779-7780:7779-7780/udp
-      - 27016:27016/udp
-      - 32331:32331/udp
-    volumes:
-      - ./cluster:/cluster
-      - ./server_fjordur:/ark
-    stop_grace_period: ${STOP_GRACE_PERIOD}
+  extinction:
+      image: r15ch13/arkcluster:latest
+      deploy:
+        mode: global
+      restart: unless-stopped
+      env_file: .env
+      environment:
+        SERVERMAP: Extinction
+        SESSION_NAME: Simplandia Extinction
+        GAME_PORT: 7779
+        QUERY_PORT: 27016
+        RCON_PORT: 32331
+      ports:
+        - 7779-7780:7779-7780/udp
+        - 27016:27016/udp
+        - 32331:32331/udp
+      volumes:
+        - ./cluster:/cluster
+        - ./server_extinction:/ark
+      stop_grace_period: ${STOP_GRACE_PERIOD}
