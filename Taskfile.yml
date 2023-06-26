@@ -21,7 +21,7 @@ tasks:
     desc: View cluster status
     cmds:
       - task exec -- crystal_isles arkmanager status
-      - task exec -- fjordur arkmanager status
+      - task exec -- valguero arkmanager status
     ignore_error: true
 
   start:
@@ -54,4 +54,4 @@ tasks:
     ignore_error: true
     cmds:
       - docker compose exec crystal_isles arkmanager {{.CLI_ARGS}}
-      - docker compose exec fjordur arkmanager {{.CLI_ARGS}}
+      - docker compose exec valguero arkmanager {{.CLI_ARGS}}

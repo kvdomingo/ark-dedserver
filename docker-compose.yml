@@ -1,42 +1,34 @@
 services:
   crystal_isles:
     image: r15ch13/arkcluster:latest
-    deploy:
-      mode: global
     restart: unless-stopped
     env_file: .env
     environment:
       SERVERMAP: CrystalIsles
-      SESSION_NAME: Simplandia CrystalIsles
-      GAME_PORT: 7777
-      QUERY_PORT: 27015
-      RCON_PORT: 32330
+      SESSION_NAME: "Simplandia CrystalIsles"
+      QUERY_PORT: 15000
+      GAME_PORT: 15002
+      RCON_PORT: 15003
     ports:
-      - 7777-7778:7777-7778/udp
-      - 27015:27015/udp
-      - 32330:32330/udp
+      - 15000-15003/udp
     volumes:
       - ./cluster:/cluster
       - ./server_crystal-isles:/ark
     stop_grace_period: ${STOP_GRACE_PERIOD}
 
-  extinction:
-      image: r15ch13/arkcluster:latest
-      deploy:
-        mode: global
-      restart: unless-stopped
-      env_file: .env
-      environment:
-        SERVERMAP: Extinction
-        SESSION_NAME: Simplandia Extinction
-        GAME_PORT: 7779
-        QUERY_PORT: 27016
-        RCON_PORT: 32331
-      ports:
-        - 7779-7780:7779-7780/udp
-        - 27016:27016/udp
-        - 32331:32331/udp
-      volumes:
-        - ./cluster:/cluster
-        - ./server_extinction:/ark
-      stop_grace_period: ${STOP_GRACE_PERIOD}
+  valguero:
+    image: r15ch13/arkcluster:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      SERVERMAP: Valguero
+      SESSION_NAME: "Simplandia Valguero"
+      QUERY_PORT: 15010
+      GAME_PORT: 15012
+      RCON_PORT: 15013
+    ports:
+      - 15010-15013/udp
+    volumes:
+      - ./cluster:/cluster
+      - ./server_valguero:/ark
+    stop_grace_period: ${STOP_GRACE_PERIOD}
